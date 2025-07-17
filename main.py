@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from PIL import Image
 
+# === Konfigurasi halaman ===
+st.set_page_config(page_title="Dashboard Sentimen Tokopedia", layout="wide")
+data = pd.read_csv ('dataset/hasil_stemming.csv')
 # --- Konfigurasi ---
 st.set_page_config(page_title="Analisis Sentimen Tokopedia", layout="wide")
 
