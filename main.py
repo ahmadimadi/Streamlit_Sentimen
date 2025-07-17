@@ -5,10 +5,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from wordcloud import WordCloud
 from PIL import Image
+from IPython.display import display, HTML
 
 # === Konfigurasi halaman ===
 st.set_page_config(page_title="Dashboard Sentimen Tokopedia", layout="wide")
-
+data = pd.read_csv ('dataset\komentar_tokopedia.csv')
 # === Gaya CSS Custom ===
 st.markdown("""
     <style>
@@ -88,10 +89,49 @@ with col1:
     # === Grafik Distribusi Sentimen ===
     st.markdown("<div class='card' style='margin-top: 20px;'>", unsafe_allow_html=True)
     st.subheader("📊 Distribusi Sentimen Ulasan")
-    sentimen_counts = pd.DataFrame({
-        'Sentimen': ['Positif', 'Negatif', 'Netral'],
-        'Jumlah': [243, 219, 97]
-    })
+
+    # daftar kata positif dan negatif setelah stemming
+    kata_positif = [
+        'bagus', 'cepat', 'murah', 'puas', 'baik', 'mantap', 'top', 'oke',
+        'rekomendasi', 'senang', 'rapi', 'tepat', 'suka', 'keren', 'recommended',
+        'worth', 'bagus', 'mantapp','terpecaya','nyaman','memuaskan','murah'
+    ]
+    
+    kata_negatif = [
+        'lama', 'buruk', 'jelek', 'mengecewa', 'parah', 'tidak', 'kecewa',
+        'lelet', 'rusak', 'telat', 'mahal', 'salah', 'kurang', 'jelekkk', 'cacat',
+        'hilang', 'lambat', 'gagal', 'batal','ribet','bohong','zonk','macet'
+    ]
+    
+    # --- Fungsi Analisis Sentimen ---
+    def sentiment_analysis_indonesian(text):
+        text = text.lower()
+        score = 0
+        for word in kata_positif:
+            if word in text:
+                score += 1
+        for word in kata_negatif:
+            if word in text:
+                score -= 1
+    
+        if score > 0:
+            return (score, 'positif')
+        elif score < 0:
+            return (score, 'negatif')
+        else:
+            return (score, 'netral')
+    
+    # --- Terapkan Fungsi ke Kolom 'content_stemming' ---
+    results = data['content_stemming'].astype(str).apply(sentiment_analysis_indonesian)
+    results = list(zip(*results))
+    
+    # --- Tambahkan Kolom 'score' dan 'Sentimen' ke DataFrame ---
+    data['score'] = results[0]
+    data['Sentimen'] = results[1]
+
+    # --- Buat Tabel Rekapitulasi Sentimen ---
+    sentimen_counts = data['Sentimen'].value_counts().reset_index()
+    sentimen_counts.columns = ['Sentimen', 'Jumlah']
 
     fig_sent, ax_sent = plt.subplots(figsize=(6, 4))
     colors = ['#2ecc71', '#e74c3c', '#95a5a6']
