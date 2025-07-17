@@ -9,7 +9,7 @@ from IPython.display import display, HTML
 
 # === Konfigurasi halaman ===
 st.set_page_config(page_title="Dashboard Sentimen Tokopedia", layout="wide")
-data = pd.read_csv ('dataset/komentar_tokopedia.csv')
+data = pd.read_csv ('dataset/hasil_stemming.csv')
 # === Gaya CSS Custom ===
 st.markdown("""
     <style>
