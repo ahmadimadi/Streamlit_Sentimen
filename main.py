@@ -88,7 +88,7 @@ with col1:
 
     # === Grafik Distribusi Sentimen ===
     st.markdown("<div class='card' style='margin-top: 20px;'>", unsafe_allow_html=True)
-    st.subheader("📊 Distribusi Sentimen Ulasan")
+    st.subheader("📊 Distribusi Ulasan")
 
     # daftar kata positif dan negatif setelah stemming
     kata_positif = [
