@@ -18,7 +18,7 @@ st.markdown("""
         background: linear-gradient(to right, #0aa66e, #1abc9c);
         padding: 20px 30px;
         border-radius: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
     .header-title {
         color: white;
@@ -59,47 +59,48 @@ with col_title:
         </div>
     """, unsafe_allow_html=True)
 
+# === Sub Judul Penelitian ===
 st.markdown("<p style='text-align:right;'>KOMPARASI KINERJA ALGORITMA RANDOM FOREST DAN KNN DALAM ANALISIS SENTIMEN ULASAN PELANGGAN DI PLATFORM E-COMMERCE TOKOPEDIA DENGAN PENERAPAN TEKNIK BOOSTING</p>", unsafe_allow_html=True)
+
+# === Menu Navigasi di Bawah Judul ===
+menu = st.selectbox(
+    "📁 Pilih Menu",
+    options=[
+        "Beranda",
+        "Evaluasi Model",
+        "Distribusi Sentimen",
+        "Wordcloud Ulasan",
+        "Wordcloud Stemming",
+        "Tentang"
+    ]
+)
+
 st.markdown("---")
 
-# === Layout 3 Kolom ===
-col1, col2, col3 = st.columns([1.3, 2, 1.7])
+# === Konten berdasarkan menu ===
+if menu == "Beranda":
+    st.subheader("📌 Beranda")
+    st.markdown("Halaman pembuka dashboard. Tambahkan konten sesuai kebutuhan Anda.")
 
-# === Kolom 1 ===
-with col1:
-    st.markdown("<div class='card'>", unsafe_allow_html=True)
+elif menu == "Evaluasi Model":
     st.subheader("📋 Tabel Evaluasi Model")
-    st.markdown("<!-- Tabel akan ditambahkan di sini -->", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("Tabel dan grafik evaluasi model akan ditambahkan di sini.")
 
-    st.markdown("<div class='card' style='margin-top: 20px;'>", unsafe_allow_html=True)
-    st.subheader("📊 Distribusi Ulasan")
-    st.markdown("<!-- Grafik distribusi akan ditambahkan di sini -->", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
+elif menu == "Distribusi Sentimen":
+    st.subheader("📊 Distribusi Sentimen")
+    st.markdown("Grafik distribusi sentimen akan ditambahkan di sini.")
 
-# === Kolom 2 ===
-with col2:
-    st.markdown("<div class='card'>", unsafe_allow_html=True)
-    st.subheader("📈 Grafik Komparasi Model")
-    st.markdown("<!-- Grafik komparasi akan ditambahkan di sini -->", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
+elif menu == "Wordcloud Ulasan":
+    st.subheader("☁️ Wordcloud Ulasan Pelanggan")
+    st.markdown("Visualisasi wordcloud dari ulasan pelanggan akan ditambahkan di sini.")
 
-    st.markdown("<div class='card' style='margin-top: 20px;'>", unsafe_allow_html=True)
-    st.subheader("📉 Perbandingan Sebelum & Sesudah SMOTE")
-    st.markdown("<!-- Grafik SMOTE akan ditambahkan di sini -->", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
+elif menu == "Wordcloud Stemming":
+    st.subheader("🧾 Wordcloud dari Proses Stemming")
+    st.markdown("Visualisasi wordcloud dari hasil stemming akan ditambahkan di sini.")
 
-# === Kolom 3 ===
-with col3:
-    st.markdown("<div class='card'>", unsafe_allow_html=True)
-    st.subheader("☁️ Word Cloud Ulasan Pelanggan")
-    st.markdown("<!-- Wordcloud akan ditambahkan di sini -->", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
-
-    st.markdown("<div class='card' style='margin-top: 20px;'>", unsafe_allow_html=True)
-    st.subheader("🧾 Word Cloud dari Proses Stemming")
-    st.markdown("<!-- Wordcloud stemming akan ditambahkan di sini -->", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
+elif menu == "Tentang":
+    st.subheader("ℹ️ Tentang Aplikasi")
+    st.markdown("Informasi tentang peneliti, data, dan tujuan proyek dapat ditambahkan di sini.")
 
 # === Footer ===
 st.markdown("""
