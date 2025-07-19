@@ -25,6 +25,33 @@ st.markdown("""
         font-size: 28px;
         font-weight: bold;
     }
+    .menu-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .menu-button {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        color: #333;
+        padding: 10px 25px;
+        margin: 0 10px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        text-align: center;
+    }
+    .menu-button:hover {
+        background-color: #1abc9c;
+        color: white;
+        border: 1px solid #1abc9c;
+    }
+    .active {
+        background-color: #1abc9c !important;
+        color: white !important;
+        border: 1px solid #1abc9c !important;
+    }
     .footer {
         text-align: center;
         padding: 10px;
@@ -59,50 +86,33 @@ with col_title:
         </div>
     """, unsafe_allow_html=True)
 
-# === Sub Judul Penelitian ===
+# === Subjudul Penelitian ===
 st.markdown("<p style='text-align:right;'>KOMPARASI KINERJA ALGORITMA RANDOM FOREST DAN KNN DALAM ANALISIS SENTIMEN ULASAN PELANGGAN DI PLATFORM E-COMMERCE TOKOPEDIA DENGAN PENERAPAN TEKNIK BOOSTING</p>", unsafe_allow_html=True)
 
-# === Menu Navigasi di Bawah Judul ===
-menu = st.selectbox(
-    "📁 Pilih Menu",
-    options=[
-        "Beranda",
-        "Evaluasi Model",
-        "Distribusi Sentimen",
-        "Wordcloud Ulasan",
-        "Wordcloud Stemming",
-        "Tentang"
-    ]
+# === MENU TETAP ===
+menu_option = st.radio(
+    "Pilih Halaman:",
+    ["Dashboard", "Klasifikasi", "Training"],
+    horizontal=True,
+    index=0,
 )
 
 st.markdown("---")
 
-# === Konten berdasarkan menu ===
-if menu == "Beranda":
-    st.subheader("📌 Beranda")
-    st.markdown("Halaman pembuka dashboard. Tambahkan konten sesuai kebutuhan Anda.")
+# === KONTEN BERDASARKAN MENU ===
+if menu_option == "Dashboard":
+    st.subheader("📊 Halaman Dashboard")
+    st.markdown("Silakan tambahkan grafik, tabel distribusi, atau metrik evaluasi di sini.")
 
-elif menu == "Evaluasi Model":
-    st.subheader("📋 Tabel Evaluasi Model")
-    st.markdown("Tabel dan grafik evaluasi model akan ditambahkan di sini.")
+elif menu_option == "Klasifikasi":
+    st.subheader("📌 Halaman Klasifikasi")
+    st.markdown("Di sini Anda bisa menambahkan form input teks ulasan dan prediksi sentimen.")
 
-elif menu == "Distribusi Sentimen":
-    st.subheader("📊 Distribusi Sentimen")
-    st.markdown("Grafik distribusi sentimen akan ditambahkan di sini.")
+elif menu_option == "Training":
+    st.subheader("⚙️ Halaman Training Model")
+    st.markdown("Di sini Anda bisa tambahkan fitur pelatihan model, upload data, atau evaluasi ulang.")
 
-elif menu == "Wordcloud Ulasan":
-    st.subheader("☁️ Wordcloud Ulasan Pelanggan")
-    st.markdown("Visualisasi wordcloud dari ulasan pelanggan akan ditambahkan di sini.")
-
-elif menu == "Wordcloud Stemming":
-    st.subheader("🧾 Wordcloud dari Proses Stemming")
-    st.markdown("Visualisasi wordcloud dari hasil stemming akan ditambahkan di sini.")
-
-elif menu == "Tentang":
-    st.subheader("ℹ️ Tentang Aplikasi")
-    st.markdown("Informasi tentang peneliti, data, dan tujuan proyek dapat ditambahkan di sini.")
-
-# === Footer ===
+# === FOOTER ===
 st.markdown("""
     <div class="footer">
         &copy; 2025 | Dibuat oleh <b>Ahmadi</b> | USTI Teknik Informatika
