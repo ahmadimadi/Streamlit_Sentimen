@@ -122,7 +122,7 @@ with col1:
             return (score, 'netral')
     
     # --- Terapkan Fungsi ke Kolom 'content_stemming' ---
-    results = data['content_stemming'].astype(str).apply(sentiment_analysis_indonesian)
+    results = data['hasil_stemming'].astype(str).apply(sentiment_analysis_indonesian)
     results = list(zip(*results))
     
     # --- Tambahkan Kolom 'score' dan 'Sentimen' ke DataFrame ---
