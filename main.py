@@ -57,7 +57,8 @@ with col_title:
             <div class="header-title">📊 Streamlit (Dashboard Interaktif)</div>
         </div>
     """, unsafe_allow_html=True)
-
+# === Sub Judul Penelitian ===
+st.markdown("<p style='text-align:right;'>KOMPARASI KINERJA ALGORITMA RANDOM FOREST DAN KNN DALAM ANALISIS SENTIMEN ULASAN PELANGGAN DI PLATFORM E-COMMERCE TOKOPEDIA DENGAN PENERAPAN TEKNIK BOOSTING</p>", unsafe_allow_html=True)
 # === MENU PILIHAN ===
 menu_option = st.radio("📁 Pilih Menu", ["Dashboard", "Klasifikasi", "Training"], horizontal=True)
 st.markdown("---")
