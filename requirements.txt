@@ -5,9 +5,9 @@ joblib
 gensim
 nltk
 pandas
-Sastrawi
 numpy
 scikit-learn
 imbalanced-learn
-lightgbm
-xgboost
+lightgbm==3.3.5
+xgboost==1.7.6
+git+https://github.com/har07/PySastrawi.git
